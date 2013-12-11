@@ -46,6 +46,8 @@ class MainView extends GLSurfaceView {
 		
 		super (context);
 		
+		getHolder().setFormat(PixelFormat.TRANSLUCENT);
+		
 		int eglVersion = 1;
 		
 		if (::WIN_ALLOW_SHADERS:: || ::WIN_REQUIRE_SHADERS::) {
@@ -84,7 +86,7 @@ class MainView extends GLSurfaceView {
 				if (::WIN_ANTIALIASING:: > 1) {
 					
 					int[] attrs = {
-						
+						EGL10.EGL_ALPHA_SIZE, 8,
 						EGL10.EGL_DEPTH_SIZE, depth,
 						EGL10.EGL_STENCIL_SIZE, stencil,
 						EGL10.EGL_SAMPLE_BUFFERS, 1 /* true */,
@@ -105,7 +107,7 @@ class MainView extends GLSurfaceView {
 					if (::WIN_ANTIALIASING:: > 2) {
 						
 						int[] attrs_aa2 = {
-							
+							EGL10.EGL_ALPHA_SIZE, 8,
 							EGL10.EGL_DEPTH_SIZE, depth,
 							EGL10.EGL_STENCIL_SIZE, stencil,
 							EGL10.EGL_SAMPLE_BUFFERS, 1 /* true */,
@@ -129,7 +131,7 @@ class MainView extends GLSurfaceView {
 					final int EGL_COVERAGE_SAMPLES_NV = 0x30E1;
 					
 					int[] attrs_aanv = {
-						
+						EGL10.EGL_ALPHA_SIZE, 8,
 						EGL10.EGL_DEPTH_SIZE, depth,
 						EGL10.EGL_STENCIL_SIZE, stencil,
 						EGL_COVERAGE_BUFFERS_NV, 1 /* true */,
@@ -150,7 +152,7 @@ class MainView extends GLSurfaceView {
 				}
 				
 				int[] attrs1 = {
-					
+					EGL10.EGL_ALPHA_SIZE, 8,
 					EGL10.EGL_DEPTH_SIZE, depth,
 					EGL10.EGL_STENCIL_SIZE, stencil,
 					EGL10.EGL_RENDERABLE_TYPE, renderType,
